@@ -43,9 +43,17 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'user.User'
 
-REST_FRAMEWORK = [
-    "rest_framework_simplejwt.authentication.JWTAuthentication",
-]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_ALTER_ROTATION': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
